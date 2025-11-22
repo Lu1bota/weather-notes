@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a small PWA built with Next.js (App Router) that lets you search weather by city, save short notes per city, and work offline with cached data.
 
-## Getting Started
+Features
 
-First, run the development server:
+- Search weather by city (OpenWeatherMap)
+- Save a note per city (persisted to `localStorage` via Zustand)
+- Simple offline mode: cached city data is shown when offline
+- PWA support via `next-pwa` with a service worker and `manifest.json`
+
+Quick start
+
+1. Install dependencies
+
+```bash
+npm install
+```
+
+2. Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- The app uses the OpenWeatherMap API. An API key was included in the project for demo purposes.
+- Build will generate a service worker via `next-pwa`. In development the service worker is disabled by default.
+- `axios` and `zustand` were added as dependencies.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Environment variables
 
-## Learn More
+- Create a `.env` file in the project root with your OpenWeatherMap key:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_OPENWEATHER_API_KEY=your_api_key_here
+NEXT_PUBLIC_OPENWEATHER_API_KEY=development|production
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The `NEXT_PUBLIC_` prefix exposes the variable to browser code (this demo reads the key client-side). If you prefer to keep the key secret, move the API calls to server-side code (API routes or server components) and use a non-`NEXT_PUBLIC_` variable.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Files of interest
 
-## Deploy on Vercel
+- `app/page.tsx` — main UI
+- `app/saved/page.tsx` — saved/cached cities
+- `store/useWeatherStore.ts` — Zustand store persisted to `localStorage`
+- `lib/api.ts` — wrapper for OpenWeatherMap requests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you'd like, I can also run `npm install` here and start the dev server, or adjust caching strategies for the service worker.

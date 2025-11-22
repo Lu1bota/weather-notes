@@ -1,0 +1,27 @@
+.container {
+  padding: 20px;
+  font-family: var(--font-geist-sans, system-ui);
+}
+.offline {
+  background: #fff4e5;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  border: 1px solid #ffecb3;
+}
+.error {
+  color: #b00020;
+  margin-top: 8px;
+}
+.hint {
+  margin-top: 12px;
+  color: #666;
+}
+.linkButton {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 0;
+  background: #0b5cff;
+  color: white;
+}

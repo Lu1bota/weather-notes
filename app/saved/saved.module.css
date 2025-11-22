@@ -1,0 +1,28 @@
+.container {
+  padding: 20px;
+}
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+.city {
+  font-weight: 600;
+}
+.temp {
+  color: #555;
+}
+.view {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 0;
+  background: #0b5cff;
+  color: white;
+}
