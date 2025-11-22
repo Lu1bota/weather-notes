@@ -113,10 +113,6 @@ export default function MainClient({ initialCity }: Props) {
 
   return (
     <main className={styles.container}>
-      {isClient && !navigator.onLine && (
-        <div className={styles.offline}>Offline mode – showing cached data</div>
-      )}
-
       <SearchForm onSearch={handleSearch} loading={loading} />
 
       {error && <div className={styles.error}>❌ {error}</div>}
